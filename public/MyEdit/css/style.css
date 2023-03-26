@@ -1,0 +1,5 @@
+.img-fit{
+    height: 7rem !important;
+    object-fit: cover !important;
+    object-position: center, center !important;
+}
