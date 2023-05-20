@@ -85,4 +85,49 @@ class AdminController extends Controller
 
         return redirect('/admin/login');
     }
+
+    public function InactiveVendor(){
+        $inactiveVendor = User::where('status', 'inactive')->where('role', 'vendor')->latest()->get();
+
+        return view('backend.vendor.inactive_vendor')->with([
+            'inactiveVendor' => $inactiveVendor,
+        ]);
+    }
+
+    public function ActiveVendor(){
+        $activeVendor = User::where('status', 'active')->where('role', 'vendor')->latest()->get();
+
+        return view('backend.vendor.active_vendor')->with([
+            'activeVendor' => $activeVendor,
+        ]);
+    }
+
+    public function VendorDetail(User $vendor){
+
+        return view('backend.vendor.vendor_detail')->with([
+            'vendor' => $vendor,
+        ]);
+    }
+
+    public function StatusVendor(User $vendor, $is_active){
+
+        if ($is_active){
+            $vendor->status = 'inactive';
+        }else{
+            $vendor->status = 'active';
+        }
+
+        $vendor->update();
+
+        $notification = array(
+            'message' => 'Vendor Status Changed Successfully',
+            'alert-type' => 'success'
+        );
+
+        if ($is_active){
+            return redirect()->route('active.vendor')->with($notification);
+        }else{
+            return redirect()->route('inactive.vendor')->with($notification);
+        }
+    }
 }
