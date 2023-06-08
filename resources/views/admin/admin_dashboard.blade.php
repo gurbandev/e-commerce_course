@@ -8,6 +8,7 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('adminbackend/assets/images/favicon-32x32.png') }}" type="image/png" />
     <!--plugins-->
+    <link href="{{ asset('adminbackend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
     <link href="{{ asset('adminbackend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
     <link href="{{ asset('adminbackend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('adminbackend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('MyEdit/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('MyEdit/css/toastr.css') }}" />
     <link href="{{ asset('adminbackend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('MyEdit/css/font-awesome.min.css') }}">
     <title>Admin Dashboard</title>
 </head>
 
@@ -81,6 +83,8 @@
 <script src="{{ asset('adminbackend/assets/js/app.js') }}"></script>
 
 <script src="{{ asset('MyEdit/js/toastr.min.js') }}"></script>
+<script src="{{ asset('MyEdit/js/font-awesome.min.js') }}"></script>
+<script src="{{ asset('MyEdit/js/text-editor.min.js') }}"></script>
 
 <script src="{{ asset('adminbackend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('adminbackend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -110,9 +114,16 @@
     @endif
 </script>
 
+<script src="{{ asset('adminbackend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 <script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
 <script src="{{ asset('adminbackend/assets/js/npm_modal.js') }}"></script>
-
+<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+</script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+</script>
 </body>
 
 </html>

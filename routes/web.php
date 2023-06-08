@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -88,6 +89,7 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         Route::get('/edit/subcategory/{subcategory}', 'EditSubCategory')->name('edit.subcategory');
         Route::post('/update/subcategory', 'UpdateSubCategory')->name('update.subcategory');
         Route::get('/delete/subcategory/{subcategory}', 'DeleteSubCategory')->name('delete.subcategory');
+        Route::get('/subcategory/ajax/{category_id}', 'GetSubCategory');
     });
 
     Route::controller(AdminController::class)->group(function(){
@@ -95,7 +97,21 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         Route::get('/active/vendor', 'ActiveVendor')->name('active.vendor');
         Route::get('/vendor/detail/{vendor}', 'VendorDetail')->name('vendor.detail');
         Route::get('/status/{vendor}/{is_active}', 'StatusVendor')->name('status.vendor');
+    });
 
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/all/product', 'AllProduct')->name('all.product');
+        Route::get('/add/product', 'AddProduct')->name('add.product');
+        Route::post('/store/product', 'StoreProduct')->name('store.product');
+        Route::get('/edit/product/{item}', 'EditProduct')->name('edit.product');
+        Route::put('/update/product/{item}', 'UpdateProduct')->name('update.product');
+        Route::put('/update/product/{item}/thambnail', 'UpdateProductThambnail')->name('update.product.thambnail');
+        Route::get('/delete/product/{item}', 'DeleteProduct')->name('delete.product');
+
+//        Route::post('/store/product', 'StoreProduct')->name('store.product');
+//        Route::get('/edit/product/{product}', 'EditProduct')->name('edit.product');
+//        Route::post('/update/product', 'UpdateProduct')->name('update.product');
+//        Route::get('/delete/product/{product}', 'DeleteProduct')->name('delete.product');
     });
 
 });
