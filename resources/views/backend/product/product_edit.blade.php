@@ -215,8 +215,9 @@
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-                <form  method="post" enctype="multipart/form-data">
+                <form action="{{ route('update.product.MultiImage', $item->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method("Put")
 
                     <tbody>
                     @foreach($multi_imgs as $key => $item)

@@ -106,12 +106,8 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         Route::get('/edit/product/{item}', 'EditProduct')->name('edit.product');
         Route::put('/update/product/{item}', 'UpdateProduct')->name('update.product');
         Route::put('/update/product/{item}/thambnail', 'UpdateProductThambnail')->name('update.product.thambnail');
+        Route::put('/update/product/{item}/multiimage', 'UpdateProductMultiImage')->name('update.product.MultiImage');
         Route::get('/delete/product/{item}', 'DeleteProduct')->name('delete.product');
-
-//        Route::post('/store/product', 'StoreProduct')->name('store.product');
-//        Route::get('/edit/product/{product}', 'EditProduct')->name('edit.product');
-//        Route::post('/update/product', 'UpdateProduct')->name('update.product');
-//        Route::get('/delete/product/{product}', 'DeleteProduct')->name('delete.product');
     });
 
 });
